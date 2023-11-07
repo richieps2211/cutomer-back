@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4  
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          
+    
       - name: pull and checkout from git repository
         run: |
            echo "pulling and checking out from git repository"
@@ -81,6 +81,17 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.base_ref }}
 
+      ######################################################## 
+      # 4- call publish-jar-as-artifact
+      ######################################################## 
+      - name: trigger deploy artifact
+        if: success()
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          event-type: publish-artifact-event          
+          client-payload: '{ "base_branch": "${{ github.base_ref }}" }'
 
 
     
