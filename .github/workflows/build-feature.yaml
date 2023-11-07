@@ -10,7 +10,7 @@ jobs:
       #############################################################
       # 2- dowload code from feature branch , setup java 8 and check that source code is buildable
       ########################################################
-      - uses: actions/checkout@v4      #uses: actions/checkout@v2
+      - uses: actions/checkout@v4  
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           
