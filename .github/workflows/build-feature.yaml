@@ -10,7 +10,7 @@ jobs:
       #############################################################
       # 2- dowload code from feature branch , setup java 8 and check that source code is buildable
       ########################################################
-      - uses: actions/checkout@v4  
+      - uses: actions/checkout@v3  
         with:
           ref: ${{ github.event.pull_request.head.sha }}
     
@@ -25,7 +25,7 @@ jobs:
           java-version: '17'
 
       - name: Cache Maven dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
