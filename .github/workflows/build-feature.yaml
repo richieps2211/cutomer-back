@@ -10,7 +10,7 @@ jobs:
       #############################################################
       # 2- dowload code from feature branch , setup java 8 and check that source code is buildable
       ########################################################
-      - uses: actions/checkout@v4  
+      - uses: actions/checkout@v3  
         with:
           ref: ${{ github.event.pull_request.head.sha }}
     
@@ -53,7 +53,7 @@ jobs:
       # 1- Dowload source code
       #Only a single commit is fetched by default, for the ref/SHA that triggered the workflow, Set fetch-depth: 0 to fetch all history for all branches and tags
       ########################################################
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           #Dowload the code from destination branch (develop)
           ref: ${{ github.base_ref }}
